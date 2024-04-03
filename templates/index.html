@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beer Tracker</title>
+    <!-- CSS styles -->
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Beer Tracker</h1>
+        <!-- Form for adding a new beer -->
+        <form action="/add_beer" method="POST">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" required><br>
+            <label for="brewery">Brewery:</label><br>
+            <input type="text" id="brewery" name="brewery" required><br>
+            <label for="abv">ABV:</label><br>
+            <input type="text" id="abv" name="abv" required><br>
+            <label for="style">Style:</label><br>
+            <input type="text" id="style" name="style" required><br>
+            <label for="ibu">IBU:</label><br>
+            <input type="text" id="ibu" name="ibu" required><br>
+            <label for="rating">Rating:</label><br>
+            <input type="text" id="rating" name="rating" required><br>
+            <button type="submit">Add Beer</button>
+        </form>
+
+        <!-- List of beers -->
+        <h2>Beers</h2>
+        <ul>
+            {% for beer in beers %}
+                <li>{{ beer[1] }} by {{ beer[2] }} - Style: {{ beer[4] }} - Rating: {{ beer[6] }} <a href="/delete_beer/{{ beer[0] }}" class="delete-btn">Delete</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
+
