@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beer Tracker</title>
     <!-- CSS styles -->
-    <link rel="stylesheet" href="static/styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <div class="container">
@@ -31,10 +31,9 @@
         <h2>Beers</h2>
         <ul>
             {% for beer in beers %}
-                <li>{{ beer[1] }} by {{ beer[2] }} - Style: {{ beer[4] }} - Rating: {{ beer[6] }} <a href="/delete_beer/{{ beer[0] }}" class="delete-btn">Delete</a></li>
+                <li>{{ beer[1] }} by {{ beer[2] }} - Style: {{ beer[4] }} - Rating: {{ beer[6] }} - Weighted Rating: {{ beer[7] }} <a href="/delete_beer/{{ beer[0] }}" class="delete-btn">Delete</a></li>
             {% endfor %}
         </ul>
     </div>
 </body>
 </html>
-
