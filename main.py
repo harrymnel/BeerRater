@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from functools import wraps
 import jwt
 import datetime
+import bcrypt
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your_secret_key'
@@ -39,6 +40,7 @@ class User(db.Model):
     username = db.Column(db.String(100), unique=True, nullable=False)
     password_hash = db.Column(db.String(100), nullable=False)
 
+
 class UserRating(db.Model):
     rating_id = db.Column(db.Integer, primary_key=True)
     beer_id = db.Column(db.Integer, db.ForeignKey('beer.beer_id'), nullable=False)
@@ -47,6 +49,13 @@ class UserRating(db.Model):
     comment = db.Column(db.Text)
     created_at = db.Column(db.DateTime, default=db.func.current_timestamp())
     updated_at = db.Column(db.DateTime, default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())
+
+# Create default user
+def create_default_user():
+    hashed_password = bcrypt.hashpw(b'Harry123', bcrypt.gensalt()).decode('utf-8')
+    default_user = User(username='Harry', password_hash=hashed_password)
+    db.session.add(default_user)
+    db.session.commit()
 
 # Authentication decorator
 def token_required(f):
@@ -103,6 +112,11 @@ def get_beers(current_user):
             'updated_at': beer.updated_at
         })
     return jsonify(result)
+
+# Initialize default user
+with app.app_context():
+    db.create_all()
+    create_default_user()
 
 # Add more CRUD endpoints for breweries, beer styles, and user ratings
 
