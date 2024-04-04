@@ -6,6 +6,22 @@
     <title>Beer Tracker</title>
     <!-- CSS styles -->
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        .rating {
+            unicode-bidi: bidi-override;
+            direction: ltr;
+            display: inline-block;
+            position: relative;
+            padding: 0;
+        }
+        .rating > span {
+            display: inline-block;
+            position: relative;
+            width: 1.1em;
+            font-size: 24px;
+            color: #f3e156;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -57,7 +73,17 @@
                             <p><strong>Brewery:</strong> {{ beer[2] }}</p>
                             <p><strong>Style:</strong> {{ beer[4] }}</p>
                             <p><strong>IBU:</strong> {{ beer[5] }}</p>
-                            <p><strong>Rating:</strong> {{ beer[6] }}</p>
+                            <p><strong>Rating:</strong>
+                                <span class="rating">
+                                    {% for _ in range(5) %}
+                                        {% if loop.index <= beer[6] %}
+                                            <span>&#9733;</span>
+                                        {% else %}
+                                            <span>&#9734;</span>
+                                        {% endif %}
+                                    {% endfor %}
+                                </span>
+                            </p>
                             <p><strong>Weighted Rating:</strong> {{ beer[7] }}</p>
                         </div>
                         <a href="/delete_beer/{{ beer[0] }}" class="delete-btn">Delete</a>
@@ -68,4 +94,5 @@
     </div>
 </body>
 </html>
+
 
