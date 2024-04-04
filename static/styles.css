@@ -1,5 +1,6 @@
+/* Global Styles */
 body {
-    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f2f2f2;
@@ -14,75 +15,98 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
-    text-align: center;
-    color: #004d40; /* Dark green color */
+h1, h2, h3 {
+    color: #333;
+}
+
+/* Header Styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 20px;
 }
 
-form {
-    margin-bottom: 20px;
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
-label {
+nav ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+nav ul li a {
+    color: #333;
+    text-decoration: none;
+}
+
+/* Add Beer Form Styles */
+.add-beer {
+    margin-bottom: 40px;
+}
+
+.add-beer label {
+    display: block;
+    margin-bottom: 5px;
     font-weight: bold;
-    color: #004d40; /* Dark green color */
 }
 
-input[type="text"] {
-    width: 100%;
+.add-beer input[type="text"] {
+    width: calc(100% - 20px);
     padding: 10px;
-    margin: 5px 0 15px 0;
+    margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
 }
 
-button {
+.add-beer button {
     padding: 10px 20px;
-    background-color: #004d40; /* Dark green color */
+    background-color: #4CAF50;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
-button:hover {
-    background-color: #00332d; /* Darker green color */
+.add-beer button:hover {
+    background-color: #45a049;
 }
 
-ul {
+/* Beer List Styles */
+.beer-list ul {
     list-style-type: none;
     padding: 0;
 }
 
-li {
-    padding: 10px;
+.beer-list li {
     background-color: #f9f9f9;
     border-radius: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    padding: 20px;
 }
 
-.delete-btn {
-    background-color: #f44336;
+.beer-info h3 {
+    margin-top: 0;
 }
-
-.delete-btn:hover {
-    background-color: #d32f2f;
-}
-
-.beer-label {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    margin-top: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
+/* Placeholder Image Styles */
 .beer-placeholder {
-    max-width: 100%;
+    width: 200px; /* Adjust size as needed */
     height: auto;
+    margin-top: 10px;
+}
+
+/* Add Another Link Styles */
+.add-another {
     display: block;
-    margin: 0 auto;
-    border-radius: 5px;
+    margin-top: 20px;
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.add-another:hover {
+    text-decoration: underline;
 }

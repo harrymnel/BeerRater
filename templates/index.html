@@ -9,31 +9,63 @@
 </head>
 <body>
     <div class="container">
-        <h1>Beer Tracker</h1>
+        <header>
+            <h1>Beer Tracker</h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
         <!-- Form for adding a new beer -->
-        <form action="/add_beer" method="POST">
-            <label for="name">Name:</label><br>
-            <input type="text" id="name" name="name" required><br>
-            <label for="brewery">Brewery:</label><br>
-            <input type="text" id="brewery" name="brewery" required><br>
-            <label for="abv">ABV:</label><br>
-            <input type="text" id="abv" name="abv" required><br>
-            <label for="style">Style:</label><br>
-            <input type="text" id="style" name="style" required><br>
-            <label for="ibu">IBU:</label><br>
-            <input type="text" id="ibu" name="ibu" required><br>
-            <label for="rating">Rating:</label><br>
-            <input type="text" id="rating" name="rating" required><br>
-            <button type="submit">Add Beer</button>
-        </form>
+        <section class="add-beer">
+            <h2>Add New Beer</h2>
+            <form action="/add_beer" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="brewery">Brewery:</label>
+                <input type="text" id="brewery" name="brewery" required>
+                
+                <label for="abv">ABV:</label>
+                <input type="text" id="abv" name="abv" required>
+                
+                <label for="style">Style:</label>
+                <input type="text" id="style" name="style" required>
+                
+                <label for="ibu">IBU:</label>
+                <input type="text" id="ibu" name="ibu" required>
+                
+                <label for="rating">Rating:</label>
+                <input type="text" id="rating" name="rating" required>
+                
+                <button type="submit">Add Beer</button>
+            </form>
+        </section>
 
         <!-- List of beers -->
-        <h2>Beers</h2>
-        <ul>
-            {% for beer in beers %}
-                <li>{{ beer[1] }} by {{ beer[2] }} - Style: {{ beer[4] }} - Rating: {{ beer[6] }} - Weighted Rating: {{ beer[7] }} <a href="/delete_beer/{{ beer[0] }}" class="delete-btn">Delete</a></li>
-            {% endfor %}
-        </ul>
+        <section class="beer-list">
+            <h2>Beers</h2>
+            <ul>
+                {% for beer in beers %}
+                    <li>
+                        <div class="beer-info">
+                            <h3>{{ beer[1] }}</h3>
+                            <p><strong>Brewery:</strong> {{ beer[2] }}</p>
+                            <p><strong>Style:</strong> {{ beer[4] }}</p>
+                            <p><strong>IBU:</strong> {{ beer[5] }}</p>
+                            <p><strong>Rating:</strong> {{ beer[6] }}</p>
+                            <p><strong>Weighted Rating:</strong> {{ beer[7] }}</p>
+                        </div>
+                        <a href="/delete_beer/{{ beer[0] }}" class="delete-btn">Delete</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
     </div>
 </body>
 </html>
+
