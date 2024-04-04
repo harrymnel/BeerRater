@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beer Added</title>
+    <!-- CSS styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Beer Added</h1>
+        <div class="beer-info">
+            <h2>{{ name }}</h2>
+            <p>Brewery: {{ brewery }}</p>
+            <!-- Display the image of the beer label or a generic placeholder image -->
+            {% if image_url %}
+                <img src="{{ image_url }}" alt="Beer Label" class="beer-label">
+            {% else %}
+                <img src="{{ url_for('static', filename='beer_placeholder.jpeg') }}" alt="Placeholder Image" class="beer-placeholder">
+            {% endif %}
+        </div>
+        <a href="/">Add Another Beer</a>
+    </div>
+</body>
+</html>

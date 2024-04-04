@@ -1,9 +1,10 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Helvetica', 'Arial', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f2f2f2;
 }
+
 .container {
     max-width: 800px;
     margin: 20px auto;
@@ -12,15 +13,22 @@ body {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
 h1 {
     text-align: center;
+    color: #004d40; /* Dark green color */
+    margin-bottom: 20px;
 }
+
 form {
     margin-bottom: 20px;
 }
+
 label {
     font-weight: bold;
+    color: #004d40; /* Dark green color */
 }
+
 input[type="text"] {
     width: 100%;
     padding: 10px;
@@ -29,30 +37,52 @@ input[type="text"] {
     border-radius: 5px;
     box-sizing: border-box;
 }
+
 button {
     padding: 10px 20px;
-    background-color: #4CAF50;
+    background-color: #004d40; /* Dark green color */
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
+
 button:hover {
-    background-color: #45a049;
+    background-color: #00332d; /* Darker green color */
 }
+
 ul {
     list-style-type: none;
     padding: 0;
 }
+
 li {
     padding: 10px;
     background-color: #f9f9f9;
     border-radius: 5px;
     margin-bottom: 10px;
 }
+
 .delete-btn {
     background-color: #f44336;
 }
+
 .delete-btn:hover {
     background-color: #d32f2f;
+}
+
+.beer-label {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.beer-placeholder {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 5px;
 }
