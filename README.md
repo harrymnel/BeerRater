@@ -1,2 +1,2 @@
 # BeerRater
-BeerRatingApp for myslef
+BeerRatingApp for myself
