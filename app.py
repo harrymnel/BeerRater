@@ -89,7 +89,7 @@ def add_beer():
     cursor.execute("INSERT INTO beers (name, brewery, abv, style, ibu, rating) VALUES (?, ?, ?, ?, ?, ?)",
                    (name, brewery, abv, style, ibu, rating))
     db.commit()
-
+    update_all_beer_ratings()
     # Search for images related to the beer's name using the Unsplash API
     image_url = search_image(name)
 
