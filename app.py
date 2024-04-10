@@ -40,24 +40,9 @@ def search_image(query):
 def calculate_weighted_rating(beer):
     db = get_db()
     cursor = db.cursor()
-    
-    # Extract beer details
-    beer_id = beer[0]
-    style = beer[4]
-    rating = beer[6]
-    
-    # Get average rating for beers of the same style
-    cursor.execute("SELECT AVG(rating) FROM beers WHERE style=? AND id != ?", (style, beer_id))
+    cursor.execute("SELECT AVG(rating) FROM beers WHERE style=?", (beer[4],))
     avg_rating = cursor.fetchone()[0]
-    
-    # Calculate weighted rating based on the difference between the beer's rating and the average rating for the style
-    if avg_rating:
-        difference = rating - avg_rating
-        weighted_rating = avg_rating + difference * 0.5  # Weighted by 50% of the difference
-    else:
-        weighted_rating = rating  # Use original rating if no ratings for the style
-    
-    return round(weighted_rating, 1)
+    return round(avg_rating, 1)
 
 
 # Routes
